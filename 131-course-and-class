@@ -1,0 +1,29 @@
+public void createCourseAndClass(String name, String description) {
+    // code here
+
+    //@params strings name and description
+    //@return none method will create a course with the name and description and 
+    //insert a class with the name and description
+
+    //create course with Name and descrption
+    
+    apxio__Course__c newCourse = new apxio__Course__c();
+        newCourse.Name = name;
+        if(!String.isBlank(description)){
+            newCourse.apxio__Course_Details__c = description;
+        }
+
+    insert newCourse;
+
+    apxio__Class__c newClass = new apxio__Class__c();
+
+    newClass.apxio__Course__c = newCourse.Id;
+    
+    if(!String.isBlank(description)){
+        newClass.apxio__Description__c = description.left(255);
+    }
+    
+    newClass.Name = name;
+    insert newClass;
+    
+}
