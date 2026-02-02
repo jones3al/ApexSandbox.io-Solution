@@ -1,0 +1,31 @@
+public Integer nextPrime(Integer num) {
+    //code here
+    // what are the inputs? an integer num
+    //what is the output? smallest prime number greater than num
+    //rules assumptions: prime numbers are > 1, check from 2 up to the number before it
+
+    if (num < 1) {
+        return 2;
+    }
+
+    Integer candidate = num + 1;
+
+    while (true) {
+        Boolean isPrime = true;
+
+        for (Integer i = 2; i < candidate; i++) {
+            if (Math.mod(candidate, i) == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime) {
+            return candidate;
+
+        }
+
+        candidate++;
+    }
+    return candidate;
+}
