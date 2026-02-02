@@ -1,0 +1,35 @@
+public void enrollStudents(List<String> emails, String className) {
+    // code here
+
+    /*******
+    @params: list of email strings and string of a class name
+    @returns none, output is students to be enrolled in class
+
+    assumptions: students and class records already exist
+    ******/
+    
+    //get list of students from emails
+    List<apxio__Student__c> studentsToEnroll = [SELECT Id, apxio__Email__c
+                                                FROM apxio__Student__c 
+                                                WHERE apxio__Email__c IN :emails];
+
+    //get id of class name
+    apxio__Class__c classToAssign = [SELECT Id, Name
+                                  FROM apxio__Class__c 
+                                  WHERE Name = :className LIMIT 1];
+
+    //loop through list of students, add enrollments record for each student
+
+    List<apxio__Class_Enrollment__c> newEnrollments = new List<apxio__Class_Enrollment__c>();
+    
+    for(apxio__Student__c student : studentsToEnroll){
+        apxio__Class_Enrollment__c enrollment = new apxio__Class_Enrollment__c();
+        enrollment.apxio__Student__c = student.Id;
+        enrollment.apxio__Offered_Class__c = classToAssign.Id;
+
+        newEnrollments.add(enrollment);
+
+    }
+
+    database.insert(newEnrollments, false);
+}
