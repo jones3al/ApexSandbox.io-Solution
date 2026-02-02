@@ -1,0 +1,23 @@
+public void insertStudents(List<String> studentNames, List<String> studentEmails) {
+    // code here
+
+    //@params list of strings of student names, and list of strings of student emails
+    //@returns void, method will insert list of student records with the names and emails
+
+    //create an empty list of students
+    List<apxio__Student__c> students = new List<apxio__Student__c>();
+
+    //create a loop of size student names the iterates, add corresponding index value to student
+    for(Integer i = 0; i < studentNames.size(); i++){
+
+        apxio__Student__c newStudent = new apxio__Student__c();
+
+        newStudent.Name = studentNames[i];
+        newStudent.apxio__Email__c = studentEmails[i];
+
+        students.add(newStudent);
+    }
+
+    insert students;
+
+}
