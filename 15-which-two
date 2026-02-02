@@ -1,0 +1,15 @@
+public String whichTwo(Integer a, Integer b, Integer c) {
+    //code here
+    String abc = '';
+
+    if(a + b == c){
+        abc = 'c';
+    }else if(a + c == b){
+        abc = 'b';
+    }else if(c + b == a){
+        abc = 'a';
+    }else{
+        return abc;
+    }
+    return abc;
+}
