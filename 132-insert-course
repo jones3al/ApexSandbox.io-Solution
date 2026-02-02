@@ -1,0 +1,28 @@
+public Id insertCourse(String name, String details, Integer credits) {
+    // code here
+
+    // parameters: name is course Name, details is apxio__Course_Details__c, credits is apxio__Credits__c
+    // @return: Id of the newly inserted course
+    //Credits 1-4, invalid values return null
+
+    Id result = null;
+
+
+    //create course object
+    apxio__Course__c newCourse = new apxio__Course__c();
+
+
+    //if credits is valid pick list value, create and insert the new course
+    if(credits == 1 || credits == 2 || credits == 3 || credits == 4){
+        newCourse.Name = name;
+        newCourse.apxio__Course_Details__c = details;
+        newCourse.apxio__Credits__c = credits.toString();
+
+        insert newCourse;
+
+        //set result to new course id
+        result = newCourse.Id;
+    }
+
+    return result;
+}
