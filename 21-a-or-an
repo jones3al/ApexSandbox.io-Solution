@@ -1,0 +1,11 @@
+public String aOrAn(String word) {
+    //code here
+    String startswithVowel = 'an ';
+    String noVowel = 'a ' + word;
+
+    if ( word.Startswith('a') || word.Startswith('e') || word.Startswith('i') || word.Startswith('o') || word.Startswith('u')  ){
+        return startswithVowel + word; 
+    } else {
+        return noVowel;
+    }
+}
