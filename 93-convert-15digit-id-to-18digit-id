@@ -1,0 +1,22 @@
+public String convert15to18DigitId(String fifteenDigit)
+{
+    //code here
+
+    /* @param string of 15 digits
+
+    output is string of 18 digit Id
+    */
+
+    //convert string to id
+    String result = '-1';
+
+    if(fifteenDigit != null && fifteenDigit.length() == 15){
+
+        Id newId = Id.valueOf(fifteenDigit);
+
+        result = newId.toString();
+    }
+
+    return result;
+
+}
