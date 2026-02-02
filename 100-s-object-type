@@ -1,0 +1,20 @@
+public Boolean isTypeAccount(sObject record)
+{
+    // code here
+
+    /***
+    @params sObject record
+    @return Bool true or false if the Sobject is of Account record type
+    ***/
+    Boolean result = false;
+
+    if(record != null){
+        if (record instanceOf Account){
+            result = true;
+        }else{
+            result = false;
+        }
+    }
+
+    return result;
+}
