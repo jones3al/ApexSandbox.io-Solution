@@ -1,0 +1,25 @@
+public String divide(Integer a, Integer b){
+    //code here
+    /*
+    @param 2 integers
+    @return string of the number
+    divide integer a by integer b, if an exception occurs, handle the exception and return the message
+    */
+
+    String result;
+
+    try{
+        Integer someMath = a / b;
+        result = String.valueOf(someMath);
+
+    } catch (exception e){
+
+        result = e.getMessage();
+
+    }
+
+    return result;
+
+
+
+}
