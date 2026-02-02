@@ -1,0 +1,31 @@
+public List<apxio__Student__c> selectUnreachableStudents() {
+    // code here
+
+    //Query the student object and return a list of all active students that are missing a email and a phone number
+    //@return is a list of apxio_Student__c
+
+    //get all active students
+    List<apxio__Student__c> activeStudents = [Select Id, Name, apxio__Email__c, apxio__Phone__c 
+                                                FROM apxio__Student__c 
+                                                WHERE apxio__Active__c = true
+                                                AND apxio__Email__c = null
+                                                AND apxio__Phone__c = null
+                                                ORDER BY Name ASC];
+
+    //loop through the list of active students, if the email and the phone number are null or empty add that student record to the list 
+
+    //create the list of unrearchable students
+    List<apxio__Student__c> unreachableStudents = new List<apxio__Student__c>();
+
+    //loop through list and find unreachable students
+    for(apxio__Student__c record : activeStudents){
+
+        if(record.apxio__Email__c == null && record.apxio__Phone__c == null ){
+
+            unreachableStudents.add(record);
+        }
+    }
+
+    return unreachableStudents;
+
+}
