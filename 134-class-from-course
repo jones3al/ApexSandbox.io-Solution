@@ -1,0 +1,23 @@
+public Id classFromCourse(String courseName) {
+    // code here
+
+    //@params String courseName
+    //@returns Id of the new class record, if no course exists return null
+    //what do we know? that class and course names are ==; 
+
+    //get course info
+    List<apxio__Course__c> courses = [SELECT Id, Name
+                                FROM apxio__Course__c
+                                WHERE Name = :courseName LIMIT 1];
+    
+    if(courses.size() == 0) return null;
+
+    //create class
+    apxio__Class__c newClass = new apxio__Class__c();
+
+    newClass.Name = courses[0].Name;
+    newClass.apxio__Course__c = courses[0].Id;
+    insert newClass;
+
+    return newclass.Id;
+}
