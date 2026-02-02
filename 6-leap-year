@@ -1,0 +1,14 @@
+public Boolean isLeapYear(Integer year) {
+    //code here
+    Boolean result;
+    Boolean divisibleBy4 = Math.mod(year,4) == 0;
+    Boolean divisibleBy100 = Math.mod(year,100) == 0;
+    Boolean divisibleBy400 = Math.mod(year,400) == 0;
+
+    if((divisibleBy4 && divisibleBy100 && divisibleBy400) || divisibleBy4 && divisibleBy100 == false){
+        result = true;
+    }else{
+        result = false;
+    }
+    return result;
+}
